@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package core.users;
+
+service UserController {
+    rpc List(UserListRequest) returns (UserListResponse) {}
+    rpc Retrieve(UserRetrieveRequest) returns (UserResponse) {}
+}
+
+message UserListRequest {
+}
+
+message UserListResponse {
+    repeated UserResponse results = 1;
+}
+
+message UserResponse {
+    optional int32 id = 1;
+    string username = 2;
+    optional string email = 3;
+}
+
+message UserRetrieveRequest {
+    int32 id = 1;
+}
+
